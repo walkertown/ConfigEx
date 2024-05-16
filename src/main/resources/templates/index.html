@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Madan DevOps</title>
+
+<style>
+.button {
+	background-color: #008CBA;; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+}
+</style>
+
+</head>
+<body >
+
+	<h2>Amazon Store - Application</h2>
+	<form th:action="@{/}" th:object="${product}" method="POST">
+		<table>
+			<tr>
+				<td>Product Name</td>
+				<td><input type="text" th:field="*{productName}" /></td>
+			</tr>
+			<tr>
+				<td>Product Company Name</td>
+				<td><input type="text" th:field="*{productCompanyName}" /></td>
+			</tr>
+			<tr>
+				<td>Product Price</td>
+				<td><input type="text" th:field="*{productPrice}" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Submit" class="button" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<hr />
+
+	<table th:if="${not #lists.isEmpty(products)}" border="1">
+		<tr>
+			<th>Id</th>
+			<th>Product Name</th>
+			<th>Product Price</th>
+			<th>Product Company Name</th>
+		</tr>
+		<tr th:each="product : ${products}">
+			<td th:text="${product.productId}"></td>
+			<td th:text="${product.productName}"></td>
+			<td th:text="${product.productPrice}"></td>
+			<td th:text="${product.productCompanyName}"></td>
+		</tr>
+	</table>
+
+	<hr />
+
+
+	<h1>Amazon Store</h1>
+
+	<p>Contact Us : + 91 - 98989 98989</p>
+	<p>
+		Visit : <a href="https://madandevops.netlify.app/">https://madandevops.netlify.app/</a>
+	</p>
+	<p>
+		<b> Copy Rights @ Amazon Store - 2020 </b>
+	</p>
+
+
+</body>
+</html>
